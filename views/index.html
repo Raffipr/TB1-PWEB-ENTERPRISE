@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Profil Mahasiswa</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Profil Mahasiswa</h1>
+    <div class="profile">
+  <img src="/foto.jpg" alt="Foto Mahasiswa" class="foto">
+      <p><strong>Nama:</strong> <span id="nama"></span></p>
+      <p><strong>NIM:</strong> <span id="nim"></span></p>
+      <p><strong>Jurusan:</strong> <span id="jurusan"></span></p>
+      <p><strong>Universitas:</strong> <span id="universitas"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+    </div>
+  </div>
+
+  <script>
+    fetch('/api/profile')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('nama').textContent = data.nama;
+        document.getElementById('nim').textContent = data.nim;
+        document.getElementById('jurusan').textContent = data.jurusan;
+        document.getElementById('universitas').textContent = data.universitas;
+        document.getElementById('email').textContent = data.email;
+      });
+  </script>
+</body>
+</html>
